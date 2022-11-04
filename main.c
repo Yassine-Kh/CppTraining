@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include "functions1.c"
 #include "test.c"
+#include "CCI.c"
 
 void session1(){
     printf("my_aff_alpha\n");
@@ -129,7 +130,7 @@ int main() {
     //test();
     //session2();
     //session3();
-    session4();
+    //session4();
     /*
     printf("\n");
     int k;
@@ -159,5 +160,6 @@ int main() {
     }
     printf("%i\n", c);
      */
+    cci();
     return 0;
 }
