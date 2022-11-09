@@ -161,5 +161,8 @@ int main() {
     printf("%i\n", c);
      */
     cci();
+    //int test[3] = {5, 6, 9};
+
+    //printf("%i", *(test + 1));
     return 0;
 }

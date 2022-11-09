@@ -376,7 +376,7 @@ char *my_strstr(char *haystack, char *needle)
                 }
                 countNeedle ++;
             }
-            if (*(needle + countNeedle) == '\0')
+            if (*(needle + countNeedle) == '\0')  // Si *(haystack + countHaystack + countNeedle) != '\0'
             {
                 return haystack + countHaystack;
             }
