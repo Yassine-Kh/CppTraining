@@ -102,9 +102,9 @@ void session4()
     my_strncpy(dest, src, 8);
     printf('\0');
 
-    dest = "ttestijdi";
+    dest = "testijdi";
 
-    printf("La comparaison donne: %i \n",my_strncmp( dest, src, 8 ));
+    printf("La comparaison donne: %i \n",my_strncmp( dest, src, 3 ));
 
     printf("Ca contient : %s\n", my_strstr( dest, src ));
 
@@ -125,7 +125,7 @@ void session4()
 }
 
 
-int main() {
+int main(int argc, char** argv) {
     //session1();
     //test();
     //session2();
@@ -160,9 +160,25 @@ int main() {
     }
     printf("%i\n", c);
      */
-    cci();
+    //cci();
     //int test[3] = {5, 6, 9};
 
     //printf("%i", *(test + 1));
+    /*
+    char testee[5] = "k";
+    char testee2[4] = "kol";
+    char* r;
+    r = my_strcat(testee, testee2);
+    char *v;
+    char testee3[5] = "k";
+    char testee4[4] = "kol";
+    v = my_strncat(testee3, testee4, 2);
+
+    char *p;
+    p = my_strdup2(testee3);
     return 0;
+     */
+    //printf("test");
+    showWeird(argc, argv);
+    show(argc, argv);
 }

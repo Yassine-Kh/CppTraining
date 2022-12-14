@@ -306,56 +306,26 @@ char *my_strncpy(char *dest, char *src, size_t n)
 
 int my_strcmp(char *s1, char *s2)
 {
-    int str1;
-    int str2;
+    int index;
 
-    str1 = 0;
-    str2 = 0;
-    while ( *s1 != '\0' )
+    index = 0;
+    while( s1[index] != '\0' && s1[index] == s2[index])
     {
-        if( *s2 != '\0' )
-        {
-            str2 += *s2;
-            s2 += 1;
-        }
-        str1 += *s1;
-        s1 += 1;
+        index++;
     }
-    while ( *s2 != '\0' )
-    {
-        str2 += *s2;
-        s2 += 1;
-    }
-    return ( str1 - str2 );
+    return ( s1[index] - s2[index] );
 }
 
 int my_strncmp(char *s1, char *s2, size_t n)
 {
-    int str1;
-    int str2;
-    size_t len;
+    int index;
 
-    str1 = 0;
-    str2 = 0;
-    len = 0;
-    while ( *s1 != '\0' && len < n )
+    index = 0;
+    while( s1[index] != '\0' && s1[index] == s2[index] && index < n)
     {
-        if( *s2 != '\0' && len < n )
-        {
-            str2 += *s2;
-            s2 += 1;
-        }
-        str1 += *s1;
-        s1 += 1;
-        len ++;
+        index++;
     }
-    while ( *s2 != '\0' && len < n )
-    {
-        str2 += *s2;
-        s2 += 1;
-        len ++;
-    }
-    return ( str1 - str2 );
+    return ( s1[index] - s2[index] );
 }
 
 
@@ -500,3 +470,103 @@ char *my_strchr(char *s, char target)
     }
     return NULL;
 }
+
+char *my_strcat(char *dest, const char *src) {
+    int index1;
+    int index2;
+
+    index1 = 0;
+    index2 = 0;
+    while(dest[index1] != '\0')
+    {
+        index1++;
+    }
+    while(src[index2] != '\0')
+    {
+        dest[index1 + index2] = src[index2];
+        index2++;
+    }
+    dest[index1 + index2] = '\0';
+    return dest;
+}
+
+char *my_strncat(char *dest, const char *src, size_t n)
+{
+    int index1;
+    int index2;
+
+    index1 = 0;
+    index2 = 0;
+    while(dest[index1] != '\0')
+    {
+        index1++;
+    }
+    while(src[index2] != '\0' && index2 < n)
+    {
+        dest[index1 + index2] = src[index2];
+        index2++;
+    }
+    dest[index1 + index2] = '\0';
+    return dest;
+}
+
+char * my_strdup( const char * source )
+{
+    int leng;
+    int index;
+    char *s = (char *) 0;
+
+    index = 0;
+    leng = my_strlen(source) + 1;
+    while(s == (char *) 0)
+    {
+        s = malloc(leng * sizeof *s);
+    }
+    while(source[index] != '\0')
+    {
+        s[index] = source[index];
+        index++;
+    }
+    s[index] = '\0';
+    return s;
+}
+
+char * my_strdup2( const char * source ) {
+    int leng;
+    char *s = (char *) 0;
+
+    leng = my_strlen(source);
+    while (s == (char *) 0) {         // Ne jamais faire caaaa !!! Ca va niquer la memoire. Mettre un if a la place.
+        s = malloc(( leng + 1 ) * sizeof *s);
+    }
+    return my_strcat(s, source);
+}
+
+
+
+// Argc et argv :
+
+void show(int argc, char** argv)
+{
+    int index;
+
+    index = 0;
+    while( index < argc )
+    {
+        my_putstr(argv[index]);
+        index++;
+    }
+}
+
+void showWeird(int argc, char** argv)
+{
+    int index;
+
+    index = argc - 1;
+    while( index >= 0 )
+    {
+        my_putstr(argv[index]);
+        index--;
+    }
+}
+
